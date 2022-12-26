@@ -20,4 +20,12 @@ function utils.lines_from(file)
   return lines
 end
 
+function utils.split_string_by_substring(str, substr)
+  output = {}
+  for match in string.gmatch(str, "[^"..substr.."]+") do
+    output[#output + 1] = match
+  end
+  return output
+end
+
 return utils
