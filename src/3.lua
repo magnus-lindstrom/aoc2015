@@ -12,8 +12,7 @@ local function update_x_y(x, y, instruction)
   elseif instruction == '<' then
     x = x - 1
   else
-    print("unrecognized instruction: "..instruction)
-    os.exit()
+    utils.exit("unrecognized instruction: "..instruction)
   end
   return x, y
 end

@@ -48,4 +48,9 @@ function utils.matrix_fields(outer_table)
   return count
 end
 
+function utils.exit(str)
+  print(str)
+  os.exit()
+end
+
 return utils

@@ -1,6 +1,6 @@
 local utils = require 'src/utils'
 
-local instructions = utils.lines_from("inputs/day1.txt")[1]
+local instructions = utils.lines_from("inputs/1")[1]
 
 local floor = 0
 local start_of_basement
@@ -11,8 +11,7 @@ for i = 1, #instructions do
   elseif instructions:sub(i,i) == ')' then
     floor = floor - 1
   else
-    print("unrecognized char: "..instructions:sub(i,i))
-    os.exit()
+    utils.exit("unrecognized char: "..instructions:sub(i,i))
   end
 
   if floor == -1 and start_of_basement == nil then
