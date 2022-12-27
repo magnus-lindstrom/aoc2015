@@ -48,6 +48,12 @@ function utils.matrix_fields(outer_table)
   return count
 end
 
+function utils.print_table(table)
+  for i, v in pairs(table) do
+    print(i, v)
+  end
+end
+
 function utils.exit(str)
   print(str)
   os.exit()
