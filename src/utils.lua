@@ -1,5 +1,15 @@
 local utils = {}
 
+function utils.table_max(table)
+	local max = -math.huge
+	for _, value in pairs(table) do
+		if value > max then
+			max = value
+		end
+	end
+	return max
+end
+
 function utils.flatten_table(table)
 	local output = {}
 	local i = 1
