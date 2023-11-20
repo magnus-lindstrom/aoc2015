@@ -110,13 +110,13 @@ local function a()
 
   for key, value in pairs(vals) do
     if key == 'a' then
-      print("7a:", bit_table_to_nr(value))
       return bit_table_to_nr(value)
     end
   end
 end
 
-local function b(nr)
+local function b()
+  local nr = a()
   local vals = {}
   local keep_running = true
   local line_done
@@ -163,10 +163,9 @@ local function b(nr)
 
   for key, value in pairs(vals) do
     if key == 'a' then
-      print("7b:", bit_table_to_nr(value))
+      return bit_table_to_nr(value)
     end
   end
 end
 
-local a_answer = a()
-b(a_answer)
+return {a = a, b = b}

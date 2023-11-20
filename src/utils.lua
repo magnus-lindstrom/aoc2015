@@ -1,5 +1,20 @@
 local utils = {}
 
+function utils.module_is_available(name)
+  if package.loaded[name] then
+    return true
+  else
+    for _, searcher in ipairs(package.searchers or package.loaders) do
+      local loader = searcher(name)
+      if type(loader) == 'function' then
+        package.preload[name] = loader
+        return true
+      end
+    end
+    return false
+  end
+end
+
 function utils.table_max(table)
 	local max = -math.huge
 	for _, value in pairs(table) do

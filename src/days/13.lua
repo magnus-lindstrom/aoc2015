@@ -78,7 +78,7 @@ local function a()
 		end
 	end
 
-	print('13a:', max_happiness)
+  return max_happiness
 end
 
 local function b()
@@ -117,8 +117,7 @@ local function b()
 		end
 	end
 
-	print('13b:', max_happiness)
+  return max_happiness
 end
 
-a()
-b()
+return {a = a, b = b}

@@ -25,7 +25,7 @@ local function a()
     end
     in_memory_chars = in_memory_chars - 2
   end
-  print('8a:', printed_chars - in_memory_chars)
+  return printed_chars - in_memory_chars
 end
 
 local function b()
@@ -43,8 +43,7 @@ local function b()
     end
     after_chars = after_chars + 2
   end
-  print('8b:', after_chars - initial_chars)
+  return after_chars - initial_chars
 end
 
-a()
-b()
+return {a = a, b = b}

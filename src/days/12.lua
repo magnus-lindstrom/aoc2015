@@ -100,7 +100,7 @@ local function a()
 	for word in string.gmatch(input, "-?%d+") do
 		sum = sum + tonumber(word)
 	end
-	print('12a:', sum)
+  return sum
 end
 
 local function b()
@@ -111,8 +111,7 @@ local function b()
 		sum, _ = get_sum_of_obj(1)
 	end
 
-	print('12b:', sum)
+  return sum
 end
 
-a()
-b()
+return {a = a, b = b}

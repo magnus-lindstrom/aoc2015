@@ -84,7 +84,12 @@ local function main(times)
 	return str_len_from_tbl(tbl)
 end
 
-local a = main(40)
-print('10a:', a)
-local b = main(50)
-print('10b:', b)
+local function a()
+  return main(40)
+end
+
+local function b()
+  return main(50)
+end
+
+return {a = a, b = b}

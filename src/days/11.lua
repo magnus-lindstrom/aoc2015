@@ -1,5 +1,7 @@
 local u = require 'src/utils'
 
+local input = u.lines_from('inputs/11')[1]
+
 local function password_str(password)
 	local output = ""
 	for _, char in ipairs(password) do
@@ -68,22 +70,40 @@ local function password_is_valid(password)
 	end
 end
 
-local input = u.lines_from('inputs/11')[1]
-local password = {}
-for i = 1, input:len() do
-	password[i] = input:sub(i, i)
+local function a()
+  local password = {}
+  for i = 1, input:len() do
+    password[i] = input:sub(i, i)
+  end
+
+  local nr_passwords_found = 0
+  while(true) do
+    password = increment_password(password)
+    if password_is_valid(password) then
+      nr_passwords_found = nr_passwords_found + 1
+      if nr_passwords_found == 1 then
+        return password_str(password)
+      end
+    end
+  end
 end
 
-local nr_passwords_found = 0
-while(true) do
-	password = increment_password(password)
-	if password_is_valid(password) then
-		nr_passwords_found = nr_passwords_found + 1
-		if nr_passwords_found == 1 then
-			print('11a:', password_str(password))
-		elseif nr_passwords_found == 2 then
-			print('11b:', password_str(password))
-			break
-		end
-	end
+local function b()
+  local password = {}
+  for i = 1, input:len() do
+    password[i] = input:sub(i, i)
+  end
+
+  local nr_passwords_found = 0
+  while(true) do
+    password = increment_password(password)
+    if password_is_valid(password) then
+      nr_passwords_found = nr_passwords_found + 1
+      if nr_passwords_found == 2 then
+        return password_str(password)
+      end
+    end
+  end
 end
+
+return {a = a, b = b}

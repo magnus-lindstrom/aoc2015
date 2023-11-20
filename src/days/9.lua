@@ -130,7 +130,7 @@ local function a()
 		end
 	end
 
-	print('9a:', min_dist)
+  return min_dist
 end
 
 local function b()
@@ -150,8 +150,7 @@ local function b()
 		end
 	end
 
-	print('9b:', max_dist)
+	return max_dist
 end
 
-a()
-b()
+return {a = a, b = b}

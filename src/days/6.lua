@@ -70,7 +70,7 @@ local function a()
       end
     end
   end
-  print("6a:", lights_on)
+  return lights_on
 end
 
 local function b()
@@ -146,8 +146,7 @@ local function b()
       end
     end
   end
-  print("6a:", total_brightness)
+  return total_brightness
 end
 
-a()
-b()
+return {a = a, b = b}

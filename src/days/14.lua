@@ -51,7 +51,7 @@ local function a()
 		end
 	end
 
-	print('14a:', max_dist)
+	return max_dist
 end
 
 local function b()
@@ -112,8 +112,7 @@ local function b()
 		end
 	end
 
-	print('14b:', u.table_max(raindeer_points))
+	return u.table_max(raindeer_points)
 end
 
-a()
-b()
+return {a = a, b = b}
