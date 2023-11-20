@@ -56,8 +56,7 @@ local function a()
 		end
 	end
 
-
-	print('16a:', right_sue_nr)
+  return right_sue_nr
 end
 
 local function b()
@@ -93,8 +92,7 @@ local function b()
 		end
 	end
 
-	print('16b:', right_sue_nr)
+  return right_sue_nr
 end
 
-a()
-b()
+return {a = a, b = b}

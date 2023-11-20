@@ -81,7 +81,7 @@ local function a()
 		end
 	end
 
-	print('15a:', max_score)
+  return max_score
 end
 
 local function b()
@@ -101,8 +101,7 @@ local function b()
 		end
 	end
 
-	print('15b:', max_score)
+  return max_score
 end
 
-a()
-b()
+return {a = a, b = b}

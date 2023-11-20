@@ -20,13 +20,12 @@ end
 
 local function a()
 	local buckets = get_buckets()
-	u.print_table(buckets)
-	print('17a:', 0)
+	-- u.print_table(buckets)
+  return 0
 end
 
 local function b()
-	print('17b:', 0)
+  return 0
 end
 
-a()
-b()
+return {a = a, b = b}
