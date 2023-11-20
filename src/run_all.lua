@@ -17,6 +17,7 @@ local answers = {
     day14a = 2640,        day14b = 1102,
     day15a = 18965440,    day15b = 15862900,
     day16a = 213,         day16b = 323,
+    day17a = 1638,        day17b = 17,
 }
 
 for number = 1, 25 do
