@@ -116,5 +116,4 @@ local function b()
   return swap_count
 end
 
-print(a())
-print(b())
+return {a = a, b = b}
