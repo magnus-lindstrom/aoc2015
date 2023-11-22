@@ -68,57 +68,53 @@ local function a()
   return u.table_length(possible_molecules)
 end
 
-local function b()
-  local subs = get_substitutions_from_input()
-  local end_molecule = get_bottom_molecule_from_input()
-  local molecule_length_cutoff = (#end_molecule) + 20
-
-  local found_states_and_steps_to_reach_them = {}
-  found_states_and_steps_to_reach_them['e'] = 0
-  local state_queue = {} -- keys are indices, values are tables with (first value: molecule, second value: nr of modifications needed)
-  state_queue[1] = {}
-  state_queue[1][1] = 'e'
-  state_queue[1][2] = 0
-  -- print('state queue at start:')
-  -- u.print_table(state_queue)
-  -- print()
-
-  local i = 1
-  while true do
-    local state_to_evolve = table.remove(state_queue, 1)
-    -- u.print_table(state_to_evolve)
-    local current_molecule = state_to_evolve[1]
-    if i % 1000 == 0 then
-      print('i:', i, 'state_queue length:', u.table_length(state_queue))
-      print('current molecule:', current_molecule)
+local function get_element_count(molecule)
+  local count = 0
+  for i = 1, #molecule do
+    local char = string.sub(molecule, i, i)
+    if char == string.upper(char) then
+      count = count + 1
     end
-    local current_steps = state_to_evolve[2]
-    -- print(current_molecule)
-    local new_molecules = get_possible_molecules(current_molecule, subs)
-    for _, new_molecule in pairs(new_molecules) do
-      -- print(new_molecule)
-      if new_molecule == end_molecule then
-        return current_steps + 1
-      end
-
-      if found_states_and_steps_to_reach_them[new_molecule] == nil then
-        if #new_molecule < molecule_length_cutoff then
-          found_states_and_steps_to_reach_them[new_molecule] = current_steps + 1
-          local state_to_insert = {}
-          state_to_insert[1] = new_molecule
-          state_to_insert[2] = current_steps + 1
-          -- print('inserting below state')
-          -- u.print_table(state_to_insert)
-          table.insert(state_queue, state_to_insert) -- inserts at the end of the table
-        end
-      end
-    end
-    -- print('state queue:')
-    -- u.print_table(state_queue)
-    -- print()
-    i = i + 1
   end
+  return count
+end
+
+local function get_swap_subtractions(molecule)
+  local subtractions = 0
+  for i = 1, #molecule do
+    local one_char = string.sub(molecule, i, i)
+    local two_chars = string.sub(molecule, i, i+1)
+    if one_char == 'Y' or two_chars == 'Rn' then
+      subtractions = subtractions + 2
+    end
+  end
+  return subtractions
+end
+
+local function b()
+  --[[
+  all transmutations follow the same patterns:
+  1: X -> XX
+  2: X -> X Rn X Ar
+  3: X -> X Rn X Y X Ar
+  4: X -> X Rn X Y X Y X Ar
+  where X is any element excluding Rn, Y and Ar (X -> XX does not necessarily mean that all X'es are
+  the same element)
+
+  The goal is to reduce the molecule to one element (or, an electron). If we converted the whole
+  molecule according to rule 1, it would take (nr_elements - 1) swaps. Each time we use rule 2, we
+  "save" 2 extra swaps, since 2 elements are removed for free. For each 'Y' introduced, we can see
+  that we save an extra 2 swaps.
+
+  So, therefore, the total number of swaps to reduce to an electron should be
+  nr_elements - 1 - 2*nr_Rn - 2*nr_Y
+  --]]
+  local molecule = get_bottom_molecule_from_input()
+  local element_count = get_element_count(molecule)
+  local swap_count = element_count - 1
+  swap_count = swap_count - get_swap_subtractions(molecule)
+  return swap_count
 end
 
 print(a())
--- print(b())
+print(b())
