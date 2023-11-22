@@ -20,3 +20,12 @@ houses and add the presents. The "downside" of this is that you will deliver man
 that will end up never being checked anyway, since an earlier house have received enough presents.
 
 This solution is waaaay faster, and runs in seconds.
+
+# Question 22
+
+I started with a breadth first search, creating thousands of game states and adding them to a long
+list. That took more than 5 mins to finish.
+
+Opted for depth first (by adding and removing game states from the same end of the list) instead,
+which caused the game to finish quickly and me to get a criteria to use when deciding to keep
+adding new game states or not. Takes seconds now.
