@@ -1,5 +1,21 @@
 local utils = {}
 
+function utils.sum_over_table_elements(tab)
+  local sum = 0
+  for _, value in pairs(tab) do
+    sum = sum + value
+  end
+  return sum
+end
+
+function utils.sum_over_table_indices(tab)
+  local sum = 0
+  for i, _ in pairs(tab) do
+    sum = sum + i
+  end
+  return sum
+end
+
 function utils.module_is_available(name)
   if package.loaded[name] then
     return true
