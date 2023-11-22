@@ -21,6 +21,7 @@ local answers = {
     day18a = 1061,        day18b = 1006,
     day19a = 576,         day19b = 207,
     day20a = 776160,      day20b = 786240,
+    day21a = 121,         day21b = 201,
 }
 
 for number = 1, 25 do
