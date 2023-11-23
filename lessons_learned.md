@@ -45,3 +45,7 @@ slower to store all temporary weights in a table and overwriting them over and o
 never store the values in a table to begin with. Sounds obvious now, but the solution went from
 perhaps taking an hour to taking <1 sec. So in the final solution, I just fetch the 1 to 6 weights
 one by one in an ugly fashion, intead of storing them in a table that can be easily summed up.
+
+# Question 25a
+
+Read the question and INPUT properly...

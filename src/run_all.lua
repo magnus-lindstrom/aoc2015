@@ -25,6 +25,7 @@ local answers = {
     day22a = 1824,        day22b = 1937,
     day23a = 170,         day23b = 247,
     day24a = 10723906903, day24b = 74850409,
+    day25a = 19980801,    day25b = "Merry Christmas!",
 }
 
 for number = 1, 25 do
