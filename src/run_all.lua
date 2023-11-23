@@ -24,6 +24,7 @@ local answers = {
     day21a = 121,         day21b = 201,
     day22a = 1824,        day22b = 1937,
     day23a = 170,         day23b = 247,
+    day24a = 10723906903, day24b = 74850409,
 }
 
 for number = 1, 25 do

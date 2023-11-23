@@ -29,3 +29,19 @@ list. That took more than 5 mins to finish.
 Opted for depth first (by adding and removing game states from the same end of the list) instead,
 which caused the game to finish quickly and me to get a criteria to use when deciding to keep
 adding new game states or not. Takes seconds now.
+
+# Question 24
+
+Started by solving in the same way as the two earlier days: using a depth-first search, and then
+discarding inferior solutions as I work my way back up the "tree". This solution is in
+src/days/24_slow.lua. The b() part takes ages to run. More than 20 minutes at least.
+
+Realized that it must be better to just check for all possible ways to create a third or a fourth of
+the total weight of packets. Just work your way up with the number of packets you allow, and as soon
+as you find a number that creates solutions, check the smallest qe value.
+
+When implementing this new solution, I found out that it was massively
+slower to store all temporary weights in a table and overwriting them over and over, than to just
+never store the values in a table to begin with. Sounds obvious now, but the solution went from
+perhaps taking an hour to taking <1 sec. So in the final solution, I just fetch the 1 to 6 weights
+one by one in an ugly fashion, intead of storing them in a table that can be easily summed up.

@@ -1,5 +1,23 @@
 local utils = {}
 
+function utils.product_of_table_elements(tab)
+  local prod = 1
+  for _, value in pairs(tab) do
+    prod = prod * value
+  end
+  return prod
+end
+
+function utils.smallest_table_element(tab)
+  local smallest = math.huge
+  for _, value in pairs(tab) do
+    if value < smallest then
+      smallest = value
+    end
+  end
+  return smallest
+end
+
 function utils.sum_over_table_elements(tab)
   local sum = 0
   for _, value in pairs(tab) do
